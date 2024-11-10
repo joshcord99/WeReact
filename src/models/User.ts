@@ -1,40 +1,42 @@
-import { Schema, model, type Document } from 'mongoose';
-
+import { Schema, model, type Document } from "mongoose";
 interface IUser extends Document {
-    username: string,
-    email: string,
-    thoughts:Schema.Types.ObjectId[],
-    freinds: Schema.Types.ObjectId[]
+  username: string;
+  email: string;
+  thoughts: Schema.Types.ObjectId[];
+  freinds: Schema.Types.ObjectId[];
 }
 
-const courseSchema = new Schema<IUser>(
-    {
-        username: {
-            type: String,
-            required: true,
-        },
-        email: {
-            type: String,
-            default: true,
-        },
-        thoughts: {
-            type: Schema.Types.ObjectId[],
-            default: Date.now(),
-        },
-         freinds: {
-            type: Schema.Types.ObjectId[],
-            // Sets a default value of 12 weeks from now
-            default: 
-        },
+const UserSchema = new Schema<IUser>(
+  {
+    username: {
+      type: String,
+      required: true,
     },
-    {
-        toJSON: {
-            virtuals: true,
-        },
-        timestamps: true
+    email: {
+      type: String,
+      required: true,
     },
+    thoughts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Thought",
+      },
+    ],
+    freinds: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+  },
+  {
+    toJSON: {
+      virtuals: true,
+    },
+    timestamps: true,
+  }
 );
 
-const Course = model<IUser>('Course', courseSchema);
+const User = model<IUser>("User", UserSchema);
 
-export default Course;
+export default User;
