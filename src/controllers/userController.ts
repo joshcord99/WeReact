@@ -29,7 +29,7 @@ export const getUserById = async (req: Request, res: Response) => {
       res.json(user);
     } else {
       res.status(404).json({
-        message: "Volunteer not found",
+        message: "User not found",
       });
     }
   } catch (error: any) {
@@ -107,4 +107,47 @@ export const deleteUser = async (req: Request, res: Response) => {
   }
 };
 
-// add ADD FRIEND and REMOVE FRIEND controllers
+//REMOVE FRIEND
+export const removeFreind = async (req: Request, res: Response) => {
+  try {
+    const user = await User.findOneAndUpdate(
+      { _id: req.params.userId },
+      { $pull: {
+        freinds: req.params.freindId
+      } },
+      { runValidators: true, new: true }
+    );
+
+    if (!user) {
+      res.status(404).json({ message: "No user with this id!" });
+    }
+
+    res.json(user);
+  } catch (error: any) {
+    res.status(400).json({
+      message: error.message,
+    });
+  }
+};
+// ADD FRIEND
+export const addFreind = async (req: Request, res: Response) => {
+  try {
+    const user = await User.findOneAndUpdate(
+      { _id: req.params.userId },
+      { $push: {
+        freinds: req.params.freindId
+      } },
+      { runValidators: true, new: true }
+    );
+
+    if (!user) {
+      res.status(404).json({ message: "No user with this id!" });
+    }
+
+    res.json(user);
+  } catch (error: any) {
+    res.status(400).json({
+      message: error.message,
+    });
+  }
+};
