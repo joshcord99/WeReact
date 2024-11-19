@@ -16,7 +16,7 @@ const reactionSchema = new Schema({
     },
     createdAt: {
         type: Date,
-        required: true,
+        default: Date.now
     },
 }, {
     timestamps: true,
@@ -30,7 +30,7 @@ const thoughtSchema = new Schema({
     },
     createdAt: {
         type: Date,
-        required: true,
+        default: Date.now
     },
     username: {
         type: String,

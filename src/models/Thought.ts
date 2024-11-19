@@ -33,7 +33,7 @@ const reactionSchema = new Schema<IReaction>(
     },
     createdAt: {
       type: Date,
-      required: true,
+      default: Date.now
     },
   },
   {
@@ -51,7 +51,7 @@ const thoughtSchema = new Schema<IThought>(
     },
     createdAt: {
       type: Date,
-      required: true,
+      default: Date.now
     },
     username: {
       type: String,
