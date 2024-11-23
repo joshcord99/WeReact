@@ -1,6 +1,6 @@
 # WeReact
 <!-- Insert Gif Here -->
-![]()
+![](https://github.com/joshcord99/WeReact/blob/main/src/assets/Screenshot%202024-11-23%20at%2011.56.47%E2%80%AFAM.png)
 
 <!-- // Provide a brief overview of what the project is about, its purpose, and what problem it solves. -->
 ## Description
