@@ -119,7 +119,7 @@ export const addReaction = async (req, res) => {
             }
         }, { runValidators: true, new: true });
         if (!thought) {
-            res.status(404).json({ message: "No thought with this id!" });
+            res.status(404).json({ message: "No reaction with this id!" });
         }
         res.json(thought);
     }
@@ -132,18 +132,14 @@ export const addReaction = async (req, res) => {
 // remove reaction:
 export const removeReaction = async (req, res) => {
     try {
-        const thought = await Thought.findOneAndUpdate({ _id: req.params.thoughtId }, {
-            $pull: {
-                reactions: req.body
-            }
-        }, { runValidators: true, new: true });
+        const thought = await Thought.findOneAndUpdate({ _id: req.params.thoughtId }, { $pull: { reactions: { _id: req.params.reactionId } } }, { new: true });
         if (!thought) {
-            res.status(404).json({ message: "No thought with this id!" });
+            return res.status(404).json({ message: "No thought or reaction with this ID!" });
         }
-        res.json(thought);
+        return res.json({ message: "Reaction removed successfully", thought });
     }
     catch (error) {
-        res.status(400).json({
+        return res.status(400).json({
             message: error.message,
         });
     }
