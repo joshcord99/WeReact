@@ -1,19 +1,5 @@
-import { Schema, Types, model, type Document } from "mongoose";
-//reaction and thought in the same file
-
-interface IReaction extends Document {
-  reactionId: Schema.Types.ObjectId;
-  reactionBody: string;
-  username: string;
-  createdAt: Date;
-}
-
-interface IThought extends Document {
-  thoughtText: string;
-  createdAt: Date;
-  username: string;
-  reactions: Schema.Types.ObjectId[];
-}
+import { Schema, Types, model } from "mongoose";
+import { IThought, IReaction } from "../types/index.js";
 
 const reactionSchema = new Schema<IReaction>(
   {
@@ -33,7 +19,7 @@ const reactionSchema = new Schema<IReaction>(
     },
     createdAt: {
       type: Date,
-      default: Date.now
+      default: Date.now,
     },
   },
   {
@@ -47,16 +33,16 @@ const thoughtSchema = new Schema<IThought>(
     thoughtText: {
       type: String,
       required: true,
-      max_length: 50,
+      maxlength: 280,
     },
     createdAt: {
       type: Date,
-      default: Date.now
+      default: Date.now,
     },
     username: {
       type: String,
       required: true,
-      max_length: 50,
+      maxlength: 50,
     },
     reactions: [reactionSchema],
   },

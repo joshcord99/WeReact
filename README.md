@@ -1,40 +1,40 @@
 # WeReact
-<!-- Insert Gif Here -->
-![](https://github.com/joshcord99/WeReact/blob/main/src/assets/Screenshot%202024-11-23%20at%2011.56.47%E2%80%AFAM.png)
 
-<!-- // Provide a brief overview of what the project is about, its purpose, and what problem it solves. -->
-## Description
-This project is a backend API for a social networking application, built with Node.js, Express.js, and MongoDB (via Mongoose). It enables users to share thoughts, react to friends' thoughts, and manage a friend list.
+Social networking API built with Node.js, Express, TypeScript, and MongoDB.
 
-<!-- //List the main sections of the README for easy navigation, especially for longer documents. -->
-## Table of Contents
-- [Installation Instructions](#installation-instructions)
-- [Usage](#usage)
-- [Contributions](#contributions)
-- [Technologies](#technologies)
-- [Contact](#contact)
+## Quick Start
 
-<!-- //Explain how to install the project. Include system requirements, necessary dependencies, and step-by-step instructions. -->
-## Installation Instructions
-clone my repo, do an npm install, then after do an npm run start.
+```bash
+npm install
+npm run start
+```
 
-<!-- //Provide examples of how to use the project, including code snippets, command line instructions, or screenshots if applicable. -->
-## Usage
-Use Insomnia or Postman to test the API endpoints.
+## API Endpoints
 
-<!-- //Outline guidelines for contributing to the project, including code standards, the process for submitting pull requests, and any rules for collaboration. -->
-## Contributions
-Please fork this project and submit a pull request.
+**Users**
 
-<!-- //list technolgies used. -->
-## Technologies
+- `GET /api/users` - Get all users
+- `POST /api/users` - Create user
+- `GET /api/users/:id` - Get user
+- `PUT /api/users/:id` - Update user
+- `DELETE /api/users/:id` - Delete user
+- `POST /api/users/:id/friends/:friendId` - Add friend
+- `DELETE /api/users/:id/friends/:friendId` - Remove friend
+
+**Thoughts**
+
+- `GET /api/thoughts` - Get all thoughts
+- `POST /api/thoughts` - Create thought
+- `GET /api/thoughts/:id` - Get thought
+- `PUT /api/thoughts/:id` - Update thought
+- `DELETE /api/thoughts/:id` - Delete thought
+- `POST /api/thoughts/:id/reactions` - Add reaction
+- `DELETE /api/thoughts/:id/reactions/:reactionId` - Remove reaction
+
+## Tech Stack
+
 - Node.js
-- Express.js
-- MongoDB (via Mongoose)
-- JavaScript
-
-<!-- //Provide contact details for users to reach out for support or inquiries, including email or links to social media profiles. -->
-## Contact
-- GitHub: [joshcord99](https://github.com/joshcord99)
-- Email: joshcord99@gmail.com
-  
+- Express
+- TypeScript
+- MongoDB
+- Mongoose

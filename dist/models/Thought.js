@@ -16,7 +16,7 @@ const reactionSchema = new Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.now
+        default: Date.now,
     },
 }, {
     timestamps: true,
@@ -26,16 +26,16 @@ const thoughtSchema = new Schema({
     thoughtText: {
         type: String,
         required: true,
-        max_length: 50,
+        maxlength: 280,
     },
     createdAt: {
         type: Date,
-        default: Date.now
+        default: Date.now,
     },
     username: {
         type: String,
         required: true,
-        max_length: 50,
+        maxlength: 50,
     },
     reactions: [reactionSchema],
 }, {

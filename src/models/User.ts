@@ -1,10 +1,5 @@
-import { Schema, model, type Document } from "mongoose";
-interface IUser extends Document {
-  username: string;
-  email: string;
-  thoughts: Schema.Types.ObjectId[];
-  freinds: Schema.Types.ObjectId[];
-}
+import { Schema, model } from "mongoose";
+import { IUser } from "../types/index.js";
 
 const UserSchema = new Schema<IUser>(
   {
@@ -22,7 +17,7 @@ const UserSchema = new Schema<IUser>(
         ref: "Thought",
       },
     ],
-    freinds: [
+    friends: [
       {
         type: Schema.Types.ObjectId,
         ref: "User",
